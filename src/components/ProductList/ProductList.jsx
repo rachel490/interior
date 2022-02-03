@@ -1,19 +1,16 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-console */
+/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
 import ProductItem from './ProductItem';
 
-function ProductList() {
+function ProductList({ products }) {
 	return (
 		<Container>
-			<ProductItem />
-			<ProductItem />
-			<ProductItem />
-			<ProductItem />
-			<ProductItem />
-			<ProductItem />
-			<ProductItem />
-			<ProductItem />
-			<ProductItem />
+			{products?.map((product) => (
+				<ProductItem product={product} key={product.productId} />
+			))}
 		</Container>
 	);
 }

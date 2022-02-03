@@ -1,12 +1,12 @@
 import React from 'react';
-import Tooltip from './components/Tooltip/Tooltip';
+import ProductDisplay from './page/ProductDisplay';
 import GlobalStyle from './Style/GlobalStyle';
 
 function App() {
 	return (
 		<div>
 			<GlobalStyle />
-			<Tooltip />
+			<ProductDisplay />
 		</div>
 	);
 }

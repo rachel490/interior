@@ -1,21 +1,20 @@
+/* eslint-disable no-console */
+/* eslint-disable react/prop-types */
 /* eslint-disable prettier/prettier */
 import React from 'react';
 import styled from 'styled-components';
 
-function ProductItem() {
+function ProductItem({ product }) {
+	console.log('product', product);
 	return (
-		<Container className="active">
-			<ProductImage
-				style={{
-					backgroundImage: `url(
-						https://images.unsplash.com/photo-1530018607912-eff2daa1bac4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1771&q=80,
-					)`,
-				}}
-			>
-				<DiscountBadge>
-					38
-					<span>%</span>
-				</DiscountBadge>
+		<Container>
+			<ProductImage style={{ backgroundImage: `url(${product.imageUrl})` }}>
+				{product.discountRate ? (
+					<DiscountBadge>
+						{product.discountRate}
+						<span>%</span>
+					</DiscountBadge>
+				) : null}
 			</ProductImage>
 		</Container>
 	);

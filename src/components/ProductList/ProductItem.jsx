@@ -8,11 +8,19 @@ import activeIdState from '../../recoil/atoms';
 
 function ProductItem({ product }) {
 	const [activeId, setActiveId] = useRecoilState(activeIdState);
+
+	const handleOnClick = () => {
+		if (activeId === product.productId) {
+			setActiveId(-1)
+		} else {
+			setActiveId(product.productId);
+		}
+	}
 	
 	return (
 		<Container
 			className={`${activeId === product.productId ? 'active' : ''}`}
-			onClick={() => setActiveId(product.productId)}
+			onClick={handleOnClick}
 		>
 			<ProductImage style={{ backgroundImage: `url(${product.imageUrl})` }}>
 				{product.discountRate ? (

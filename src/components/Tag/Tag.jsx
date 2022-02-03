@@ -14,7 +14,11 @@ function Tag({ product}) {
 	const [activeId, setActiveId] = useRecoilState(activeIdState);
 
 	const toggleActive = () => {
-		setActiveId(product.productId);
+		if (activeId === product.productId) {
+			setActiveId(-1);
+		} else {
+			setActiveId(product.productId);
+		}
 	};
 
 	return (

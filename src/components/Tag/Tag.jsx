@@ -35,7 +35,7 @@ function Tag({ product}) {
 				alt="close-icon"
 				onClick={toggleActive}
 			/>
-			<Tooltip product={product} className={activeId === product.productId ? '' : 'hide'} />
+			<Tooltip product={product} active={activeId === product.productId ? '' : 'hide'} />
 		</Container>
 	);
 }

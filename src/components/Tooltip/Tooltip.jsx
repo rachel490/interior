@@ -4,9 +4,10 @@ import React from 'react';
 import { IoIosArrowForward } from 'react-icons/io';
 import styled from 'styled-components';
 
-function Tooltip({ product, className }) {
+function Tooltip({ product, active }) {
+
 	return (
-		<Container className={className}>
+		<Container className={`${active} ${product.pointX > 300 ? 'bottomLocation' : ''} ${product.pointY > 200 ? 'rightLocation' : ''}`} >
 			<ImgWrap style={{ backgroundImage: `url(${product.imageUrl})` }} />
 			<InfoWrap>
 				<span className="name">{product.productName}</span>
@@ -30,19 +31,33 @@ function Tooltip({ product, className }) {
 export default Tooltip;
 
 const Container = styled.div`
-	width: 212px;
-	height: 70px;
+	width: 220px;
+	height: 86px;
+	margin-top: 16px;
+	padding: 8px 0 8px 8px;
 	border-radius: 7px;
 	display: flex;
 	align-items: center;
-	padding: 8px;
+	font-size: 14px;
+	color: #4a4a4a;
 	box-shadow: 3px 3px 8px 0 rgb(0 0 0 / 20%);
-	margin: 50px;
-	box-sizing: content-box;
-	background-color: white;
+	background-color: rgba(255, 255, 255, 0.95);
+	z-index: 1000;
+	position: absolute;
+	top: 28px;
+	left: -20px;
 
-	.hide {
+	&.hide {
 		display: none;
+	}
+
+	&.bottomLocation {
+		top: unset;
+		bottom: 52px;
+	}
+
+	&.rightLocation {
+		left: -160px;
 	}
 `;
 

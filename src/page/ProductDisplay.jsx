@@ -1,13 +1,17 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 /* eslint-disable prettier/prettier */
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useRecoilState } from "recoil";
 import styled from 'styled-components';
 import ProductList from '../components/ProductList/ProductList';
 import Tag from '../components/Tag/Tag';
+import activeIdState from "../recoil/atoms";
 
 function ProductDisplay() {
 	const [interiorInfo, setInteriorInfo] = useState({});
+	const [activeId, setActiveId] = useRecoilState(activeIdState);
 
 	useEffect(() => {
 		axios
@@ -19,7 +23,7 @@ function ProductDisplay() {
 		<Wrap>
 			<div>
 				<Content>
-					<InteriorImage src={interiorInfo.imageUrl} alt="interior" />
+					<InteriorImage src={interiorInfo.imageUrl} alt="interior" onClick={() => setActiveId(-1)}/>
 					{interiorInfo.productList?.map((product) => (
 						<Tag product={product} key={product.productId} />
 					))}

@@ -1,17 +1,17 @@
 import React from 'react';
 import { RecoilRoot } from 'recoil';
 import ProductDisplay from './page/ProductDisplay';
-import GlobalStyle from './Style/GlobalStyle';
+import GlobalStyle from './styles/GlobalStyle';
 
 function App() {
-	return (
-		<div>
-			<RecoilRoot>
-				<GlobalStyle />
-				<ProductDisplay />
-			</RecoilRoot>
-		</div>
-	);
+  return (
+    <div>
+      <RecoilRoot>
+        <GlobalStyle />
+        <ProductDisplay />
+      </RecoilRoot>
+    </div>
+  );
 }
 
 export default App;

@@ -1,12 +1,15 @@
 import React from 'react';
+import { RecoilRoot } from 'recoil';
 import ProductDisplay from './page/ProductDisplay';
 import GlobalStyle from './Style/GlobalStyle';
 
 function App() {
 	return (
 		<div>
-			<GlobalStyle />
-			<ProductDisplay />
+			<RecoilRoot>
+				<GlobalStyle />
+				<ProductDisplay />
+			</RecoilRoot>
 		</div>
 	);
 }

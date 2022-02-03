@@ -8,7 +8,6 @@ import Tag from "../components/Tag/Tag";
 
 function ProductDisplay() {
 	const [interiorInfo, setInteriorInfo] = useState({});
-	const [activeId, setActiveId] = useState(-1);
 
 	useEffect(() => {
 		axios
@@ -20,9 +19,9 @@ function ProductDisplay() {
 		<div>
 			<Content>
 				<InteriorImage src={interiorInfo.imageUrl} alt="interior" />
-				{interiorInfo.productList?.map(product => <Tag product={product} setActiveId={setActiveId} key={product.productId} />)}
+				{interiorInfo.productList?.map(product => <Tag product={product} key={product.productId} />)}
 			</Content>
-			<ProductList products={interiorInfo.productList} activeId={activeId}/>
+			<ProductList products={interiorInfo.productList} />
 		</div>
 	);
 }

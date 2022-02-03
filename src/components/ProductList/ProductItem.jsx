@@ -2,11 +2,18 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable prettier/prettier */
 import React from 'react';
+import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
+import activeIdState from '../../recoil/atoms';
 
-function ProductItem({ product, activeId }) {
+function ProductItem({ product }) {
+	const [activeId, setActiveId] = useRecoilState(activeIdState);
+	
 	return (
-		<Container className={`${activeId === product.productId ? 'active' : ''}`}>
+		<Container
+			className={`${activeId === product.productId ? 'active' : ''}`}
+			onClick={() => setActiveId(product.productId)}
+		>
 			<ProductImage style={{ backgroundImage: `url(${product.imageUrl})` }}>
 				{product.discountRate ? (
 					<DiscountBadge>

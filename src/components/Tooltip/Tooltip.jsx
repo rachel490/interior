@@ -5,9 +5,12 @@ import { IoIosArrowForward } from 'react-icons/io';
 import styled from 'styled-components';
 
 function Tooltip({ product, active }) {
-
 	return (
-		<Container className={`${active} ${product.pointX > 300 ? 'bottomLocation' : ''} ${product.pointY > 200 ? 'rightLocation' : ''}`} >
+		<Container
+			className={`${active} ${product.pointX > 300 ? 'bottomLocation' : ''} ${
+				product.pointY > 200 ? 'rightLocation' : ''
+			}`}
+		>
 			<ImgWrap style={{ backgroundImage: `url(${product.imageUrl})` }} />
 			<InfoWrap>
 				<span className="name">{product.productName}</span>
@@ -54,10 +57,34 @@ const Container = styled.div`
 	&.bottomLocation {
 		top: unset;
 		bottom: 52px;
+
+		&::before {
+			top: unset;
+			bottom: -8px;
+			transform: rotate(180deg);
+		}
 	}
 
 	&.rightLocation {
 		left: -160px;
+
+		&::before {
+			left: unset;
+			right: 38px;
+		}
+	}
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: -8px;
+		left: 30px;
+		width: 12px;
+		height: 8px;
+		background-image: url(//cdn.ggumim.co.kr/storage/20211118152728RO3OXnhkrC.png);
+		background-size: cover;
+		background-repeat: no-repeat;
+		z-index: 1100;
 	}
 `;
 

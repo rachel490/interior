@@ -4,9 +4,9 @@ import React from 'react';
 import { IoIosArrowForward } from 'react-icons/io';
 import styled from 'styled-components';
 
-function Tooltip({ product }) {
+function Tooltip({ product, className }) {
 	return (
-		<Container>
+		<Container className={className}>
 			<ImgWrap style={{ backgroundImage: `url(${product.imageUrl})` }} />
 			<InfoWrap>
 				<span className="name">{product.productName}</span>
@@ -40,6 +40,10 @@ const Container = styled.div`
 	margin: 50px;
 	box-sizing: content-box;
 	background-color: white;
+
+	.hide {
+		display: none;
+	}
 `;
 
 const ImgWrap = styled.div`

@@ -1,22 +1,35 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable no-undef */
+/* eslint-disable prettier/prettier */
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Tooltip from '../Tooltip/Tooltip';
 
-function Tag({ product }) {
+function Tag({ product, setActiveId }) {
+	const [active, setActive] = useState(false);
+
+	const toggleActive = () => {
+		setActive(!active);
+		setActiveId(product.productId);
+	}
+
 	return (
 		<Container x={product.pointX} y={product.pointY}>
 			<img
 				src="//cdn.ggumim.co.kr/storage/20211029145238AlZrQ41xtg.png"
 				alt="search-icon"
-				className="search-icon"
+				className={`search-icon ${active ? 'hide' : ''}`}
+				onClick={toggleActive}
 			/>
 			<img
 				src="//cdn.ggumim.co.kr/storage/20211029145330GwwumnWNSs.png"
-				className="close-icon hide"
+				className={`close-icon ${active ? '' : 'hide'}`}
 				alt="close-icon"
+				onClick={toggleActive}
 			/>
-			<Tooltip product={product} />
+			<Tooltip product={product} className={active ? '' : 'hide'} />
 		</Container>
 	);
 }

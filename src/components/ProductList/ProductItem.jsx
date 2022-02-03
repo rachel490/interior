@@ -4,10 +4,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function ProductItem({ product }) {
-	console.log('product', product);
+function ProductItem({ product, activeId }) {
 	return (
-		<Container>
+		<Container className={`${activeId === product.productId ? 'active' : ''}`}>
 			<ProductImage style={{ backgroundImage: `url(${product.imageUrl})` }}>
 				{product.discountRate ? (
 					<DiscountBadge>

@@ -5,11 +5,11 @@ import React from 'react';
 import styled from 'styled-components';
 import ProductItem from './ProductItem';
 
-function ProductList({ products }) {
+function ProductList({ products, activeId }) {
 	return (
 		<Container>
 			{products?.map((product) => (
-				<ProductItem product={product} key={product.productId} />
+				<ProductItem product={product} key={product.productId} activeId={activeId} />
 			))}
 		</Container>
 	);
